@@ -1,0 +1,50 @@
+.event-properties-definition-table {
+    .LemonTable__content > table > tbody {
+        td.definition-column-icon {
+            padding-right: 0.5rem;
+            width: 36px;
+
+            .definition-column-name-icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 30px;
+                font-size: 1.2rem;
+
+                svg.taxonomy-icon {
+                    flex-shrink: 0;
+
+                    &.taxonomy-icon-muted {
+                        color: var(--muted-alt);
+                    }
+
+                    &.taxonomy-icon-verified {
+                        color: var(--success);
+                    }
+                }
+            }
+        }
+
+        td.definition-column-name {
+            .definition-column-name-content {
+                display: flex;
+                flex-direction: column;
+                position: relative;
+                min-height: 32px;
+                justify-content: center;
+
+                .definition-column-name-content-title {
+                    align-items: center;
+                    cursor: pointer;
+                    display: flex;
+                    font-weight: 600;
+                    gap: 0.25rem;
+
+                    svg {
+                        color: var(--success);
+                    }
+                }
+            }
+        }
+    }
+}

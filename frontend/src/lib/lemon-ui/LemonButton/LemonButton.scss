@@ -1,0 +1,205 @@
+.LemonButton,
+.Link.LemonButton {
+    // Make sure we override .Link's styles where needed, e.g. padding
+    align-items: center;
+    appearance: none !important; // Important as this gets overridden by Ant styles...
+    background: none;
+    border-radius: var(--radius);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+
+    .posthog-3000 & {
+        font-family: var(--font-title);
+    }
+
+    flex-shrink: 0;
+    font-size: 0.875rem;
+    font-weight: 500;
+    gap: 0.5rem;
+    justify-content: flex-start;
+    line-height: 1.5rem;
+    padding: 0.25rem 0.75rem;
+    position: relative;
+    text-align: left;
+    transition: background-color 200ms ease, color 200ms ease, border 200ms ease, opacity 200ms ease,
+        transform 100ms ease;
+    user-select: none;
+
+    .font-normal {
+        font-family: var(--font-sans);
+    }
+
+    > span {
+        display: flex;
+        flex: 1;
+        gap: 0.5rem;
+    }
+
+    .LemonButton__content {
+        flex: 1;
+        line-height: initial;
+        display: flex;
+        align-items: center;
+    }
+
+    &[aria-disabled='true']:not(.LemonButton--loading) {
+        cursor: not-allowed;
+
+        > span {
+            cursor: not-allowed;
+        }
+
+        opacity: var(--opacity-disabled);
+    }
+
+    &.LemonButton--loading {
+        cursor: default;
+    }
+
+    &.LemonButton--full-width {
+        width: 100%;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+
+        > span,
+        .LemonButton__content {
+            overflow: hidden;
+        }
+    }
+
+    &.LemonButton--centered {
+        > span {
+            justify-content: center !important;
+        }
+
+        .LemonButton__content {
+            flex: initial !important;
+            text-align: center !important;
+        }
+    }
+
+    &.LemonButton--has-icon {
+        padding-left: 0.5rem;
+    }
+
+    &.LemonButton--no-content {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    &.LemonButton--xsmall {
+        gap: 0.25rem;
+        font-size: 0.75rem;
+
+        > span {
+            gap: 0.25rem;
+        }
+
+        .LemonButton__icon {
+            font-size: 0.875rem;
+        }
+    }
+
+    &.LemonButton--small {
+        gap: 0.25rem;
+
+        > span {
+            gap: 0.25rem;
+        }
+
+        .LemonButton__icon {
+            font-size: 1.25rem;
+        }
+    }
+
+    &.LemonButton--large {
+        font-size: 1rem;
+
+        > span {
+            gap: 0.75rem;
+        }
+
+        .LemonButton__icon {
+            font-size: 1.75rem;
+        }
+    }
+
+    &.LemonButton--no-padding {
+        min-height: 0;
+        height: auto;
+        width: auto;
+        padding: 0;
+
+        &.LemonButton--full-width {
+            width: 100%;
+        }
+    }
+
+    .LemonButton__icon {
+        display: flex;
+        font-size: 1.5rem;
+        flex-shrink: 0;
+        transition: color 200ms ease;
+        place-items: center center;
+    }
+
+    @each $status in ('primary', 'danger', 'primary-alt', 'muted') {
+        &.LemonButton--status-#{$status} {
+            // Primary - blocked color style
+            &.LemonButton--primary {
+                color: #fff;
+                background: var(--#{$status}-3000, var(--#{$status}));
+
+                &:not([aria-disabled='true']):hover,
+                &.LemonButton--active {
+                    color: #fff;
+                }
+
+                &:not([aria-disabled='true']):active {
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    .ant-tooltip & {
+        // Buttons have an overriden style in tooltips, as they are always dark
+        &:hover {
+            background: rgb(255 255 255 / 15%) !important;
+        }
+
+        &:active {
+            background: rgb(255 255 255 / 20%) !important;
+        }
+
+        .LemonButton__icon {
+            color: #fff !important;
+        }
+    }
+}
+
+.LemonButtonWithSideAction {
+    position: relative;
+}
+
+.LemonButtonWithSideAction__spacer {
+    box-sizing: content-box;
+
+    &.LemonButtonWithSideAction__spacer--divider {
+        border-left: 1px solid currentColor;
+    }
+}
+
+.LemonButtonWithSideAction__side-button {
+    position: absolute;
+    top: 50%;
+    right: 0.5rem;
+    transform: translateY(-50%);
+    background: none;
+
+    .LemonButtonWithSideAction--small & {
+        right: 0.375rem;
+    }
+}

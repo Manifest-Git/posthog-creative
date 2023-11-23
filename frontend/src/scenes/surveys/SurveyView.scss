@@ -1,0 +1,19 @@
+.masonry-container {
+    column-count: 4;
+    column-gap: 10px;
+}
+
+@media screen and (max-width: 1024px) {
+    .masonry-container {
+        column-count: 2;
+    }
+}
+
+.masonry-item {
+    margin: 0;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    margin-bottom: 10px;
+    break-inside: avoid;
+    box-sizing: border-box;
+}
